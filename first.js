@@ -3,6 +3,8 @@ document.getElementById("button2").onclick = function() {delivery()}
 document.getElementById("button3").onclick = function() {window.location.href = "store.html"}
 document.getElementById("button4").onclick = function() {table()}
 document.getElementById("button5").onclick = function() {temperature()}
+document.getElementById("button6").onclick = function() {discount()}
+document.getElementById("button7").onclick = function() {ship()}
 
 function register() {
     let firstName = prompt("Please enter your first name");
@@ -92,4 +94,71 @@ function temperature() {
     }
 
     window.alert(result)
+}
+
+function discount() {
+    let name = prompt("Enter your name");
+    let age = Number(prompt("Enter your age please"))
+    let count = Number(sessionStorage.getItem("count"))
+    let amount = Number(sessionStorage.getItem("amount"))
+
+    if(isNaN(age)) {
+        window.alert("Please enter valid age")
+    }
+
+    else if(age >= 60 || (count >= 4 && amount >= 100)) {
+        window.alert("You received discount")
+    }
+
+    else {
+        window.alert("You can't receive discount")
+    }
+}
+
+function ship() {
+    let length = Number(prompt("Enter length"));
+    let width = Number(prompt("Enter width"));
+    let height = Number(prompt("Enter height"));
+    let weight = Number(prompt("Enter weight"));
+    let distance = Number(prompt("Enter distance"));
+
+    if(isNaN(length) || isNaN(width) || isNaN(height) || isNaN(weight) || isNaN(distance)) {
+        window.alert("Please enter valid values")
+    } else {
+        if(length + width + height <= 150) {
+            if(length <= 100 && width <= 100 && height <= 100) {
+                if(weight <= 10) {
+                    if(distance >= 3 && distance <= 10) {
+                        window.alert("It is available for shipping")
+                    } else {
+                        window.alert("Distance must be between 3km and 10km")
+                    }
+                } else {
+                    window.alert("Weight can not exceed 10 kg")
+                }
+            } else {
+                window.alert("None of the measurements can exceed 100 cm")
+            }
+        } else {
+            window.alert("Sum of length, width and height can not exceed 150 cm")
+        }
+    }
+}
+
+let numResult = ""
+
+function number() {
+    let number = Number(prompt("Enter number"));
+
+    if(isNaN(number)) {
+        window.alert("Please enter valid number");
+    } else {
+        
+    }
+}
+
+function numCheck(number) {
+    switch(number) {
+        case 1: numResult = 
+    }
 }

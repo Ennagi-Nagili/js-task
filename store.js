@@ -3,25 +3,32 @@ let names = document.getElementsByClassName("name");
 let prices = document.getElementsByClassName("price");
 let pros = document.getElementsByClassName("pro");
 let clear = document.getElementById("clear");
-let items = []
-let total = document.getElementById("total")
+let items = [];
+let total = document.getElementById("total");
+let amount = 0;
+let realAmount = 0;
+let count = 0;
 
 for(let i = 0; i < btn.length; i++) {
     btn[i].onclick = function() {
         let prc = Number(prices[i].innerHTML.replace("$", ""))
-        console.log(typeof prc)
+
+        realAmount += prc;
+        count++;
+        sessionStorage.setItem("amount", realAmount);
+        sessionStorage.setItem("count", count);
 
         if(pros[i].innerHTML == "Promotion: Yes") {
-            prc -= (prc / 100) * 15
+            prc *= 0.85
         }
 
         if(items.length >= 4) {
-            prc -= (prc / 10)
+            prc *= 0.9
         }
 
         items.push(prc)
 
-        let amount = 0
+        let amount = 0;
 
         for(j in items) {
             amount += items[j]
@@ -29,4 +36,12 @@ for(let i = 0; i < btn.length; i++) {
 
         total.innerHTML = "Total: " + amount + "$"
     }
+}
+
+clear.onclick = function() {
+    amount = 0;
+    count = 0;
+    total.innerHTML = "Total: " + amount + "$";
+    sessionStorage.setItem("amount", realAmount);
+    sessionStorage.setItem("count", count);
 }
