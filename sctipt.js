@@ -84,11 +84,13 @@ function temperature() {
     let temperature3 = Number(prompt("Please enter temperature"));
     let temps = [temperature1, temperature2, temperature3];
 
-    for(let i = 0; i < temps.length-1; i++) {
-        if(temps[i] < temps[i+1]) {
-            let a = temps[i+1]
-            temps[i+1] = temps[i]
-            temps[i] = a
+    for(let i = 0; i < temps.length; i++) {
+        for(let j = 0; j < temps.length-1; j++) {
+            if(temps[j] < temps[j+1]) {
+                let a = temps[j+1]
+                temps[j+1] = temps[j]
+                temps[j] = a
+            }
         }
     }
 
